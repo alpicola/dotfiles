@@ -46,6 +46,8 @@ set whichwrap=b,s,h,l,<,>,[,]
 " タブ
 set expandtab
 set softtabstop=4 tabstop=4 shiftwidth=4
+" set copyindent
+" set preserveindent
 
 " 対応する括弧を表示
 set showmatch
@@ -121,6 +123,7 @@ nmap <C-J> <C-D>
 nmap <C-K> <C-U>
 vnoremap / /\%V
 vnoremap ? ?\%V
+nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
 
 " バッファ切替
 nmap <silent> gb :bnext<CR>
@@ -207,3 +210,19 @@ inoremap <TAB> <C-R>=InsertTabWrapper()<CR>
 " }}} Autocompletion using the TAB key
 
 let g:SimpleJsIndenter_BriefMode = 1
+
+function! CountLines()
+    let i = 1
+    let c = 0
+    while i <= line("$")
+         if getline(i) !~ "^\s*$" && synIDattr(synID(i, 1, 0), "name") !~ ".*Comment$"
+             let c = c + 1
+         endif
+         let i = i + 1
+     endwhile
+    return c
+endfunction
+command! -nargs=0 CountLines echo CountLines()
+nmap ,l :CountLines<CR>
+
+let g:filetype_m = 'objc'

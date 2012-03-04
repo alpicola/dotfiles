@@ -14,7 +14,10 @@ export MAILCHECK=3600
 
 export __CF_USER_TEXT_ENCODING='0x1F5:0x08000100:14'
 
-export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
+# export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
+
+# for ruby mysql library
+export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
 
 # export LS_COLORS='di=38;5;101:ln=38;5;101:so=38;5;228:ex=38;5;172:bd=38;5;167:cd=38;5;179'
 
@@ -104,6 +107,9 @@ if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
 		echo -n "\e]2;zsh\a"
 	}
 fi
+
+autoload -Uz zmv
+alias zmv='noglob zmv -W'
 
 alias rsync='rsync --exclude ".DS_Store"'
 alias ls='ls -FG'
