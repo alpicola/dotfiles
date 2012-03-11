@@ -126,4 +126,10 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
+_Z_CMD=j
+source ~/.zsh/z.sh
+precmd() {
+    _z --add "$(pwd -P)"
+}
+
 if [[ -s /Users/ryo/.rvm/scripts/rvm ]]; then source /Users/ryo/.rvm/scripts/rvm; fi  

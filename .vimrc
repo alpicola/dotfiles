@@ -78,6 +78,8 @@ set imsearch=0
 
 set mouse=a
 
+set modeline
+
 augroup MyAutoCmd
 	autocmd!
 augroup END
