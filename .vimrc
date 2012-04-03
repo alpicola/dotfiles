@@ -1,4 +1,3 @@
-
 set nocompatible
 syntax on
 
@@ -35,19 +34,18 @@ set nobackup
 
 set autoread
 
+" インデント
+set expandtab
+set softtabstop=4 tabstop=4 shiftwidth=4
 set autoindent smartindent
+" set copyindent
+" set preserveindent
 
 " backspace で改行とかも削除できるように
 set backspace=indent,eol,start
 
 " 行頭・行末間移動を可能に
 set whichwrap=b,s,h,l,<,>,[,]
-
-" タブ
-set expandtab
-set softtabstop=4 tabstop=4 shiftwidth=4
-" set copyindent
-" set preserveindent
 
 " 対応する括弧を表示
 set showmatch
@@ -94,7 +92,7 @@ autocmd MyAutoCmd BufNewFile,BufRead *.mxml set filetype=mxml
 autocmd MyAutoCmd BufNewFile,BufRead *.ru set filetype=ruby
 autocmd MyAutoCmd BufNewFile,BufRead *.pde set filetype=processing
 autocmd MyAutoCmd BufNewFile,BufRead *.spde set filetype=scala
-" autocmd MyAutoCmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=git | AutoComplPopDisable
+autocmd MyAutoCmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=git
 
 " filetype off
 " call pathogen#runtime_append_all_bundles()
@@ -135,7 +133,7 @@ nmap <silent> gB :bprev<CR>
 nmap <Space>r :QuickRun -split 'rightbelow 10'<CR>
 nmap <Space>R :QuickRun -split 'rightbelow vertical'<CR>
 
-" FuzzyFinder
+" fuf.vim
 let g:fuf_modesDisable = ['mrucmd']
 let g:fuf_file_exclude = '\v\.DS_Store|\.git|\.svn|\.(swp|swo|bak|gif|jpg|png|bmp)$'
 let g:fuf_mrufile_exclude = '\v\.DS_Store|\.git|\.svn|\.swp$'
@@ -148,7 +146,7 @@ nmap <Space>fl :FufLine<CR>
 nmap <Space>fm :FufMruFile<CR>
 nmap <Space>fq :FufQuickfix<CR>
 
-" neocomplcache
+" neocomplcache.vim
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
@@ -158,9 +156,9 @@ let g:neocomplcache_plugin_disable = {
   \ 'syntax_complete' : 1,
   \ 'tags_complete' : 1,
   \ }
-if !exists('g:neocomplcache_plugin_rank')
-  let g:neocomplcache_plugin_rank = {}
-endif
+let g:neocomplcache_text_mode_filetypes = {}
+let g:neocomplcache_text_mode_filetypes.markdown = 1
+let g:neocomplcache_plugin_rank = {}
 let g:neocomplcache_plugin_rank.buffer_complete = 15
 inoremap <expr><C-l> neocomplcache#complete_common_string()
 inoremap <expr><CR>  pumvisible() ? neocomplcache#smart_close_popup() : "\<CR>"
@@ -169,7 +167,7 @@ inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
 nnoremap <Space>nc :NeoComplCacheCachingBuffer<CR>
 
-" Git
+" git.vim
 nmap <Space>ga :GitAdd<CR>
 nmap <Space>gA :GitAdd .<CR>
 nmap <Space>gc :GitCommit<CR>
@@ -198,7 +196,7 @@ let mapleader=' '
 " カーソル位置の highlight グループを取得する
 command! -nargs=0 GetHighlightingGroup echo 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') . '> trans<' . synIDattr(synID(line('.'),col('.'),0),'name') . '> lo<' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'name') . '>'
 
-nmap ,hg :GetHighlightingGroup<CR>
+nmap <Space>hg :GetHighlightingGroup<CR>
 
 let g:SimpleJsIndenter_BriefMode = 1
 
