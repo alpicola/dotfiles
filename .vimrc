@@ -94,7 +94,7 @@ autocmd MyAutoCmd BufNewFile,BufRead *.mxml set filetype=mxml
 autocmd MyAutoCmd BufNewFile,BufRead *.ru set filetype=ruby
 autocmd MyAutoCmd BufNewFile,BufRead *.pde set filetype=processing
 autocmd MyAutoCmd BufNewFile,BufRead *.spde set filetype=scala
-autocmd MyAutoCmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=git | AutoComplPopDisable
+" autocmd MyAutoCmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=git | AutoComplPopDisable
 
 " filetype off
 " call pathogen#runtime_append_all_bundles()
@@ -148,6 +148,27 @@ nmap <Space>fl :FufLine<CR>
 nmap <Space>fm :FufMruFile<CR>
 nmap <Space>fq :FufQuickfix<CR>
 
+" neocomplcache
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_auto_completion_start_length = 2
+let g:neocomplcache_lock_buffer_name_pattern = 'fuf'
+let g:neocomplcache_plugin_disable = {
+  \ 'syntax_complete' : 1,
+  \ 'tags_complete' : 1,
+  \ }
+if !exists('g:neocomplcache_plugin_rank')
+  let g:neocomplcache_plugin_rank = {}
+endif
+let g:neocomplcache_plugin_rank.buffer_complete = 15
+inoremap <expr><C-l> neocomplcache#complete_common_string()
+inoremap <expr><CR>  pumvisible() ? neocomplcache#smart_close_popup() : "\<CR>"
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-y> neocomplcache#close_popup()
+inoremap <expr><C-e> neocomplcache#cancel_popup()
+nnoremap <Space>nc :NeoComplCacheCachingBuffer<CR>
+
 " Git
 nmap <Space>ga :GitAdd<CR>
 nmap <Space>gA :GitAdd .<CR>
@@ -174,42 +195,10 @@ endif
 
 let mapleader=' '
 
-function! ShebangExecute()
-	let m = matchlist(getline(1), '#!\(.*\)')
-	if(len(m) > 2)
-		execute '!'. m[1] . ' %'
-	else
-		execute '!' &ft ' %'
-	endif
-endfunction
-
-nmap ,e :call ShebangExecute()<CR>
-
 " カーソル位置の highlight グループを取得する
 command! -nargs=0 GetHighlightingGroup echo 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') . '> trans<' . synIDattr(synID(line('.'),col('.'),0),'name') . '> lo<' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'name') . '>'
 
 nmap ,hg :GetHighlightingGroup<CR>
-
-" {{{ Autocompletion using the TAB key
-
-" This function determines, wether we are on the start of the line text (then tab indents) or
-" if we want to try autocompletion
-function! InsertTabWrapper()
-	if pumvisible()
-		return "\<C-N>"
-	else
-		let col = col('.') - 1
-		if !col || getline('.')[col - 1] =~ '\k'
-			return "\<C-N>\<C-P>"
-		else
-			return "\<TAB>"
-		endif
-	endif
-endfunction
-" Remap the tab key to select action with InsertTabWrapper
-inoremap <TAB> <C-R>=InsertTabWrapper()<CR>
-
-" }}} Autocompletion using the TAB key
 
 let g:SimpleJsIndenter_BriefMode = 1
 
