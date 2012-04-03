@@ -1,2 +1,2 @@
-setlocal expandtab
-setlocal dictionary=~/.vim/dict/haskell.dict
+setlocal omnifunc=necoghc#omnifunc
+" setlocal dictionary=~/.vim/dict/haskell.dict
