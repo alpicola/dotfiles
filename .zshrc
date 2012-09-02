@@ -1,6 +1,6 @@
 export LANG=ja_JP.UTF-8
 
-export PATH=~/bin:~/Library/Haskell/bin:/opt/local/bin:/opt/local/sbin:/Developer/SDKs/flex_sdk_4/bin:/usr/local/mysql/bin:$PATH
+export PATH=~/bin:~/.cabal/bin:~/Library/Haskell/bin:/opt/local/bin:/opt/local/sbin:/Developer/SDKs/flex_sdk_4/bin:/usr/local/mysql/bin:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
 
 export HREF_DATADIR=/usr/share/href

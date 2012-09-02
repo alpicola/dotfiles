@@ -12,7 +12,7 @@ elseif &term =~ "xterm-color"
 	colorscheme twilight16
 endif
 
-" 行番号表示
+" 行番号を表示
 set number
 
 " エンコーディング
@@ -128,6 +128,10 @@ nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
 " バッファ切替
 nmap <silent> gb :bnext<CR>
 nmap <silent> gB :bprev<CR>
+
+" vimshell
+vmap <silent> <Space>s :VimShellSendString<CR>
+nnoremap <silent> <Space>s :VimShellSendString<CR>
 
 " quickrun.vim
 nmap <Space>r :QuickRun -split 'rightbelow 10'<CR>

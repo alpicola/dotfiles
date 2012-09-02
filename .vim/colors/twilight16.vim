@@ -14,7 +14,7 @@ hi Normal         ctermfg=15         ctermbg=0
 " hi CursorIM       ctermfg=255          ctermbg=172
 " hi Directory      ctermfg=3          ctermbg=233
 hi ErrorMsg       ctermfg=1          ctermbg=3
-" hi VertSplit      ctermfg=137          ctermbg=231
+hi VertSplit      ctermfg=7          ctermbg=15
 " hi Folded         ctermfg=230          ctermbg=8
 hi IncSearch      ctermfg=0          ctermbg=1
 hi LineNr         ctermfg=4          ctermbg=0
