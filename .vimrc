@@ -184,6 +184,13 @@ nmap <Space>gp :GitPush<CR>
 nmap <Space>gP :GitPull<CR>
 nmap <Space>gs :GitStatus<CR>
 
+" ghcmod
+nmap <Space>ht :GhcModType<CR>
+nmap <Space>hT :GhcModTypeClear<CR>
+nmap <Space>hc :GhcModCheck<CR>
+nmap <Space>hl :GhcModLint<CR>
+nmap <Space>he :GhcModExpand<CR>
+
 " クリップボード
 if has('gui_running')
 	noremap <Space>y "+y
