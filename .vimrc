@@ -17,7 +17,7 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplcache', "c36f1e177989560edb1ccfc2d1b89359e3833ef5"
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'motemen/git-vim'
@@ -143,17 +143,12 @@ nnoremap <silent> <Space>ua :<C-u>UniteWithBufferDir -buffer-name=files buffer f
 " neocomplcache.vim
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_min_syntax_length = 2
 let g:neocomplcache_auto_completion_start_length = 2
-let g:neocomplcache_lock_buffer_name_pattern = 'fuf'
-let g:neocomplcache_plugin_disable = {
-  \ 'syntax_complete' : 1,
-  \ 'tags_complete' : 1,
-  \ }
 let g:neocomplcache_text_mode_filetypes = {}
 let g:neocomplcache_text_mode_filetypes.markdown = 1
-let g:neocomplcache_plugin_rank = {}
-let g:neocomplcache_plugin_rank.buffer_complete = 15
 inoremap <expr><C-l> neocomplcache#complete_common_string()
 inoremap <expr><CR>  pumvisible() ? neocomplcache#smart_close_popup() : "\<CR>"
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
