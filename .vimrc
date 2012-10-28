@@ -1,9 +1,34 @@
 set nocompatible
-syntax on
+filetype off
 
-filetype on
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
+
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'motemen/git-vim'
+NeoBundle 'ujihisa/neco-ghc'
+NeoBundle 'ujihisa/neco-look'
+NeoBundle 'eagletmt/unite-haddock'
+
 filetype plugin on
 filetype indent on
+
+syntax on
 
 if &term =~ "xterm-256color"
 	colorscheme twilight256
@@ -56,20 +81,23 @@ set showcmd
 " ステータスを表示
 set laststatus=2
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%{GitBranch()!=''?'['.GitBranch().']':''}%=%l,%c%V%8P
-"set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+" set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 
 " 検索
 set ignorecase smartcase
 set incsearch
 set wrapscan
-
 set nohlsearch
 
 set hidden
 
 set lazyredraw
 
-" IM は無効に
+set winwidth=80
+
+set splitbelow
+set splitright
+
 set imdisable
 set iminsert=0
 set imsearch=0
@@ -78,40 +106,7 @@ set mouse=a
 
 set modeline
 
-augroup MyAutoCmd
-	autocmd!
-augroup END
-
-autocmd MyAutoCmd BufReadPost *
-	\   if &modifiable && !search('[^\x00-\x7F]', 'cnw')
-	\ |   setlocal fileencoding=
-	\ | endif
-
-autocmd MyAutoCmd BufNewFile,BufRead *.as set filetype=actionscript
-autocmd MyAutoCmd BufNewFile,BufRead *.mxml set filetype=mxml
-autocmd MyAutoCmd BufNewFile,BufRead *.ru set filetype=ruby
-autocmd MyAutoCmd BufNewFile,BufRead *.pde set filetype=processing
-autocmd MyAutoCmd BufNewFile,BufRead *.spde set filetype=scala
-autocmd MyAutoCmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=git
-
-" filetype off
-" call pathogen#runtime_append_all_bundles()
-" call pathogen#helptags()
-" filetype plugin on
-
-" iTerm のタブにタイトルを設定
-function! SetTabTitle()
-	let t = expand("%:t")
-	if t == ""
-		silent! execute '!echo -n "\e]1;vim\a"'
-	elseif t !~ "^\[A-Za-z0-9\]*://"
-		silent! execute '!echo -n "\e]1;'. t . ' — vim\a"'
-	endif
-endfunction
-
-if &term =~ "xterm-256color" "iTerm.app
-	autocmd BufEnter * call SetTabTitle()
-endif
+autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=git
 
 " Key Mapping
 
@@ -125,7 +120,6 @@ vnoremap / /\%V
 vnoremap ? ?\%V
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
 
-" バッファ切替
 nmap <silent> gb :bnext<CR>
 nmap <silent> gB :bprev<CR>
 
@@ -134,21 +128,16 @@ vmap <silent> <Space>s :VimShellSendString<CR>
 nnoremap <silent> <Space>s :VimShellSendString<CR>
 
 " quickrun.vim
-nmap <Space>r :QuickRun -split 'rightbelow 10'<CR>
-nmap <Space>R :QuickRun -split 'rightbelow vertical'<CR>
+nmap <silent> <Space>r :QuickRun -split 'rightbelow 10'<CR>
+nmap <silent> <Space>R :QuickRun -split 'rightbelow vertical'<CR>
 
-" fuf.vim
-let g:fuf_modesDisable = ['mrucmd']
-let g:fuf_file_exclude = '\v\.DS_Store|\.git|\.svn|\.(swp|swo|bak|gif|jpg|png|bmp)$'
-let g:fuf_mrufile_exclude = '\v\.DS_Store|\.git|\.svn|\.swp$'
-let g:fuf_mrufile_maxItem = 100
-nmap <Space>fb :FufBuffer<CR>
-nmap <Space>fd :FufDir<CR>
-nmap <Space>ff :FufFile **/<CR>
-nmap <Space>fc :FufFile<C-R>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
-nmap <Space>fl :FufLine<CR>
-nmap <Space>fm :FufMruFile<CR>
-nmap <Space>fq :FufQuickfix<CR>
+" unite.vim
+nnoremap <silent> <Space>ub :<C-u>Unite buffer<CR>
+nnoremap <silent> <Space>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <Space>ur :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> <Space>um :<C-u>Unite file_mru<CR>
+nnoremap <silent> <Space>uu :<C-u>Unite buffer file_mru<CR>
+nnoremap <silent> <Space>ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
 " neocomplcache.vim
 let g:neocomplcache_enable_at_startup = 1
@@ -204,12 +193,14 @@ endif
 
 let mapleader=' '
 
+let g:filetype_m = 'objc'
+
+let g:SimpleJsIndenter_BriefMode = 1
+
 " カーソル位置の highlight グループを取得する
 command! -nargs=0 GetHighlightingGroup echo 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') . '> trans<' . synIDattr(synID(line('.'),col('.'),0),'name') . '> lo<' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'name') . '>'
 
 nmap <Space>hg :GetHighlightingGroup<CR>
-
-let g:SimpleJsIndenter_BriefMode = 1
 
 function! CountLines()
     let i = 1
@@ -225,4 +216,16 @@ endfunction
 command! -nargs=0 CountLines echo CountLines()
 nmap ,l :CountLines<CR>
 
-let g:filetype_m = 'objc'
+" iTerm のタブにタイトルを設定
+function! SetTabTitle()
+	let t = expand("%:t")
+	if t == ""
+		silent! execute '!echo -n "\e]1;vim\a"'
+	elseif t !~ "^\[A-Za-z0-9\]*://"
+		silent! execute '!echo -n "\e]1;'. t . ' — vim\a"'
+	endif
+endfunction
+
+if &term =~ "xterm-256color" "iTerm.app
+	autocmd BufEnter * call SetTabTitle()
+endif

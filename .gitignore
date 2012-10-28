@@ -1,3 +1,5 @@
 .VimballRecord
 .BAK
 .netrwhist
+.vim/bundle/*
+!.vim/bundle/neobundle.vim
