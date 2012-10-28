@@ -3,7 +3,6 @@ export LANG=ja_JP.UTF-8
 export PATH=~/bin:~/.cabal/bin:~/Library/Haskell/bin:/opt/local/bin:/opt/local/sbin:/Developer/SDKs/flex_sdk_4/bin:/usr/local/mysql/bin:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
 
-export HREF_DATADIR=/usr/share/href
 export GISTY_DIR=~/gist
 
 export PAGER=lv
@@ -23,6 +22,13 @@ export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
 
 bindkey -e
 
+# 履歴検索
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
+
 setopt extended_glob
 
 setopt auto_pushd
@@ -33,8 +39,11 @@ setopt auto_cd
 # ヒストリは上書きせず追加で
 setopt append_history
 
-# 連続する同じコマンドは記録しない
-setopt hist_ignore_dups
+# 既にヒストリにあるコマンドは古い方を削除
+setopt hist_ignore_all_dups
+
+# 余計なスペースを削除
+setopt hist_reduce_blanks
 
 # シェルのプロセスごとに履歴を共有
 setopt share_history

@@ -42,7 +42,7 @@ set number
 
 " エンコーディング
 set encoding=utf-8
-set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
+set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,ucs-bom,default,latin1
 
 " ○
 set ambiwidth=double
@@ -132,6 +132,7 @@ nmap <silent> <Space>r :QuickRun -split 'rightbelow 10'<CR>
 nmap <silent> <Space>R :QuickRun -split 'rightbelow vertical'<CR>
 
 " unite.vim
+let g:unite_enable_start_insert = 1
 nnoremap <silent> <Space>ub :<C-u>Unite buffer<CR>
 nnoremap <silent> <Space>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> <Space>ur :<C-u>Unite -buffer-name=register register<CR>
