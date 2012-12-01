@@ -1,5 +1,7 @@
 .VimballRecord
 .BAK
 .netrwhist
+.vim/tmp/*
+.vim/undo/*
 .vim/bundle/*
 !.vim/bundle/neobundle.vim

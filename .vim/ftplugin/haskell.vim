@@ -1,2 +1,2 @@
 setlocal omnifunc=necoghc#omnifunc
-" setlocal dictionary=~/.vim/dict/haskell.dict
+setlocal tabstop=2 softtabstop=2 shiftwidth=2
