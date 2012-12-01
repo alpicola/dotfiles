@@ -6,24 +6,45 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
+" core
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-NeoBundle 'Shougo/vimshell'
+    \ 'build' : {
+    \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
+    \     'cygwin' : 'make -f make_cygwin.mak',
+    \     'mac' : 'make -f make_mac.mak',
+    \     'unix' : 'make -f make_unix.mak',
+    \    },
+    \ }
+
+" unite
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplcache', "c36f1e177989560edb1ccfc2d1b89359e3833ef5"
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'motemen/git-vim'
+NeoBundle 'Shogo/unite-outline'
+NeoBundle 'eagletmt/unite-haddock'
+
+" input
+NeoBundle 'Shougo/neocomplcache', 'c36f1e177989560edb1ccfc2d1b89359e3833ef5'
+NeoBundle 'Shougo/neosnippet'
 NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'ujihisa/neco-look'
-NeoBundle 'eagletmt/unite-haddock'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-indent'
+
+" filetype
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'derekwyatt/vim-scala'
+NeoBundle 'VimClojure'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'hail2u/vim-css3-syntax'
+
+" tool
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'motemen/git-vim'
+
+" doc
+NeoBundle 'vim-jp/vimdoc-ja'
+NeoBundle 'thinca/vim-ref'
 
 filetype plugin on
 filetype indent on
@@ -48,7 +69,7 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,ucs-bom,default,latin1
 set ambiwidth=double
 
 " 補完
-set wildmode=longest,list
+set wildmode=longest:full,full
 set wildmenu
 set completeopt=menu,preview,longest,menuone
 set complete=.,w,b,u,k
@@ -94,7 +115,6 @@ set hidden
 set lazyredraw
 
 set winwidth=80
-
 set splitbelow
 set splitright
 
@@ -105,6 +125,8 @@ set imsearch=0
 set mouse=a
 
 set modeline
+
+set lispwords-=if
 
 autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=git
 
@@ -128,19 +150,34 @@ vmap <silent> <Space>s :VimShellSendString<CR>
 nnoremap <silent> <Space>s :VimShellSendString<CR>
 
 " quickrun.vim
+let g:quickrun_config = {
+    \   '_' : {
+    \       'runner' : 'vimproc',
+    \       'runner/vimproc/updatetime' : 40,
+    \       'outputter/buffer/split' : 'below 10sp',
+    \   },
+    \   'egison' : {
+    \       'command' : 'egisonc',
+    \       'exec': ['%c %o --test %s', '%s:p:r'],
+    \       'tempfile': '%{tempname()}.egi',
+    \       'hook/sweep/files': '%S:p:r',
+    \   },
+    \}
 nmap <silent> <Space>r :QuickRun -split 'rightbelow 10'<CR>
 nmap <silent> <Space>R :QuickRun -split 'rightbelow vertical'<CR>
 
 " unite.vim
 let g:unite_enable_start_insert = 1
 nnoremap <silent> <Space>ub :<C-u>Unite buffer<CR>
+nnoremap <silent> <Space>ud :<C-u>Unite file_rec<CR>
 nnoremap <silent> <Space>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> <Space>ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> <Space>um :<C-u>Unite file_mru<CR>
 nnoremap <silent> <Space>uu :<C-u>Unite buffer file_mru<CR>
-nnoremap <silent> <Space>ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> <Space>ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru<CR>
+nnoremap <silent> <Space>uo :<C-u>Unite outline<CR>
 
-" neocomplcache.vim
+" neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_camel_case_completion = 1
@@ -155,6 +192,16 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
 nnoremap <Space>nc :NeoComplCacheCachingBuffer<CR>
+
+" neosnippet
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
 
 " git.vim
 nmap <Space>ga :GitAdd<CR>
