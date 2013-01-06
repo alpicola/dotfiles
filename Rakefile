@@ -5,7 +5,7 @@ DOTFILES = %w|.vim .vimrc .zsh .zshrc|
 directory DOTFILES_DIR
 
 file DOTFILES_DIR do |t|
-  sh 'git clone --recursive' DOTFILES_REPO, DOTFILES_DIR
+  sh "git clone --recursive #{DOTFILES_REPO} #{DOTFILES_DIR}"
 end
 
 file DOTFILES => DOTFILES_DIR do |t|
