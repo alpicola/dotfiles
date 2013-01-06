@@ -24,22 +24,27 @@ NeoBundle 'eagletmt/unite-haddock'
 
 " input
 NeoBundle 'Shougo/neocomplcache', 'c36f1e177989560edb1ccfc2d1b89359e3833ef5'
-NeoBundle 'Shougo/neosnippet'
+" NeoBundle 'Shougo/neosnippet'
 NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'thinca/vim-textobj-comment'
 
 " filetype
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'VimClojure'
 NeoBundle 'othree/html5.vim'
+NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'grafi-tt/vim-filetype-haskell'
+NeoBundle 'tpope/vim-haml'
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'vim-ruby/vim-ruby'
 
-" tool
+" tools
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'motemen/git-vim'
@@ -54,10 +59,10 @@ filetype indent on
 syntax on
 
 if &term =~ "xterm-256color"
-	colorscheme twilight256
+    colorscheme twilight256
 elseif &term =~ "xterm-color"
     set t_Co=16
-	colorscheme twilight16
+    colorscheme twilight16
 endif
 
 set encoding=utf-8
@@ -68,7 +73,6 @@ set wildmenu
 set completeopt=menu,preview,longest,menuone
 set complete=.,w,b,u,k
 set scrolloff=15
-set nobackup
 set autoread
 set expandtab
 set softtabstop=4
@@ -101,26 +105,22 @@ set imsearch=0
 set mouse=a
 set modeline
 set lispwords-=if
-set directory=~/.vim/tmp
+set nobackup
+set directory=~/.vim/tmp/swap//
 set swapfile
-
+if has('persistent_undo')
+  set undodir=~/.vim/tmp/undo//
+  set undofile
+endif
 if has('conceal')
   set conceallevel=2
   set concealcursor=i
 endif
 
-if has('persistent_undo')
-  set undodir=~/.vim/undo
-  set undofile
-endif
-
 let mapleader=' '
-
+let g:vim_indent_cont = &sw
 let g:filetype_m = 'objc'
-
-let g:SimpleJsIndenter_BriefMode = 1
-
-autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=git
+let g:asmsyntax = 'ppc'
 
 nnoremap <silent> j gj
 nnoremap <silent> k gk
@@ -153,20 +153,19 @@ nnoremap <silent> <Space>s :VimShellSendString<CR>
 
 " quickrun.vim
 let g:quickrun_config = {
-    \   '_' : {
-    \       'runner' : 'vimproc',
-    \       'runner/vimproc/updatetime' : 40,
-    \       'outputter/buffer/split' : 'below 10sp',
-    \   },
-    \   'egison' : {
-    \       'command' : 'egisonc',
-    \       'exec': ['%c %o --test %s', '%s:p:r'],
-    \       'tempfile': '%{tempname()}.egi',
-    \       'hook/sweep/files': '%S:p:r',
-    \   },
-    \}
-nmap <silent> <Space>r :QuickRun -split 'rightbelow 10'<CR>
-nmap <silent> <Space>R :QuickRun -split 'rightbelow vertical'<CR>
+    \     '_' : {
+    \         'runner' : 'vimproc',
+    \         'runner/vimproc/updatetime' : 40,
+    \         'outputter/buffer/split' : 'below 10sp',
+    \     },
+    \     'egison' : {
+    \         'command' : 'egisonc',
+    \         'exec': ['%c %o --test %s', '%s:p:r'],
+    \         'tempfile': '%{tempname()}.egi',
+    \         'hook/sweep/files': '%S:p:r',
+    \     },
+    \ }
+nmap <silent> <Space>r :QuickRun<CR>
 
 " unite.vim
 let g:unite_enable_start_insert = 1
@@ -196,10 +195,10 @@ inoremap <expr><C-e> neocomplcache#cancel_popup()
 nnoremap <Space>nc :NeoComplCacheCachingBuffer<CR>
 
 " neosnippet
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" imap <C-k> <Plug>(neosnippet_expand_or_jump)
+" smap <C-k> <Plug>(neosnippet_expand_or_jump)
+" imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+" smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " git.vim
 nmap <Space>ga :GitAdd<CR>
@@ -213,6 +212,7 @@ nmap <Space>gL :GitLog -u<CR>
 nmap <Space>gp :GitPush<CR>
 nmap <Space>gP :GitPull<CR>
 nmap <Space>gs :GitStatus<CR>
+autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=git
 
 " ghcmod
 nmap <Space>ht :GhcModType<CR>
