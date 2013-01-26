@@ -43,6 +43,7 @@ NeoBundle 'grafi-tt/vim-filetype-haskell'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'alpicola/vim-egison'
 
 " tools
 NeoBundle 'Shougo/vimshell'
@@ -52,6 +53,9 @@ NeoBundle 'motemen/git-vim'
 " doc
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'thinca/vim-ref'
+
+" colorscheme
+NeoBundle 'altercation/vim-colors-solarized'
 
 filetype plugin on
 filetype indent on
@@ -126,14 +130,16 @@ nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap <silent> <Down> gj
 nnoremap <silent> <Up> gk
-nmap <C-J> <C-D>
-nmap <C-K> <C-U>
+nmap <C-j> <C-d>
+nmap <C-k> <C-u>
 vnoremap / /\%V
 vnoremap ? ?\%V
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
 
 nmap <silent> gb :bnext<CR>
 nmap <silent> gB :bprev<CR>
+nmap <silent> <C-n> :bnext<CR>
+nmap <silent> <C-p> :bprev<CR>
 
 command! -nargs=0 GetHighlightingGroup echo
     \ 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') .
