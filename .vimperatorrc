@@ -1,0 +1,37 @@
+set! browser.tabs.closeWindowWithLastTab=false
+set! ui.key.contentAccess=0
+
+set gui=none
+set complete=tsl
+set hintchars=asdfghjkl
+set hlsearch
+set nextpattern=\bnext\b,\bmore\b,next,^次(の)?ページ,\b次.*,→\b,^>$,^(>>|≫)$,^(>|≫),(>|≫)$
+set previouspattern=\bprev|previous\b,prev,^前(の)?ページ,\b前.*,\b←,^<$,^(<<|≪)$,^(<|≪),(<|≪)$ 
+
+nmap <C-j> <C-d>
+nmap <C-k> <C-u>
+nnoremap j 5j
+nnoremap k 5k
+cnoremap <C-n> <Tab>
+cnoremap <C-p> <S-Tab>
+nnoremap U :undo<Space>
+vnoremap P y<Esc><Esc>P
+
+" Google Search
+noremap s :set<Space>complete=s<CR>:open<Space>google<Space>
+noremap S :set<Space>complete=s<CR>:tabopen<Space>google<Space>
+
+" Hatena Bookmark
+javascript <<EOM
+if (typeof hBookmark != 'undefined') {
+    liberator.globalVariables.hBookmark_shortcuts = {
+        hintsAdd     : 'x',
+        hintsComment : 'X',
+        add          : ['x'],
+        comment      : ['X'],
+    };
+
+    liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
+}
+EOM
+set complete+=H
