@@ -3,23 +3,30 @@ set! browser.tabs.closeWindowWithLastTab=false
 set! ui.key.contentAccess=0
 
 set gui=none
-set complete=tsl
 set hintchars=asdfghjkl
 set focuscontent
-" set noinsertmode
 set nextpattern=\bnext\b,\bmore\b,next,^次(の)?ページ,\b次.*,→\b,^>$,^(>>|≫)$,^(>|≫),(>|≫)$
 set previouspattern=\bprev|previous\b,prev,^前(の)?ページ,\b前.*,\b←,^<$,^(<<|≪)$,^(<|≪),(<|≪)$ 
 
 nmap <C-j> <C-d>
 nmap <C-k> <C-u>
 nmap <C-t> :tabnew<CR>
-nmap <C-g> :tabgroups switch<Space>
+nmap a :tombloo Link<CR>
+nmap A <Nop>
+nmap s :set<Space>complete=s<CR>:tabopen<Space>
+nmap S :hbt<Space>
+nmap o :set<Space>complete=l<CR>:open<Space>
+nmap t :set<Space>complete=l<CR>:tabopen<Space>
+nmap U :undo<Space>
+nmap B :tabgroups<Space>switch<Space>
 nnoremap j 5j
 nnoremap k 5k
-cnoremap <C-n> <Tab>
-cnoremap <C-p> <S-Tab>
-nnoremap U :undo<Space>
-vnoremap P y<Esc><Esc>P
+cmap <C-n> <Tab>
+cmap <C-p> <S-Tab>
+vmap P y<Esc><Esc>P
+
+let g:plugin_loader_roots="~/repos/vimperator-plugins"
+let g:plugin_loader_plugins="_libly,tombloo,caret-hint,prevent-pseudo-domain"
 
 " http://d.hatena.ne.jp/eagletmt/20120104/1325627319
 js <<EOM
@@ -35,10 +42,6 @@ mappings.addUserMap(
 );
 EOM
 
-" Google Search
-noremap s :set<Space>complete=s<CR>:open<Space>google<Space>
-noremap S :set<Space>complete=s<CR>:tabopen<Space>google<Space>
-
 " Hatena Bookmark
 js <<EOM
 if (typeof hBookmark != 'undefined') {
@@ -48,8 +51,6 @@ if (typeof hBookmark != 'undefined') {
         add          : ['x'],
         comment      : ['X'],
     };
-
     liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
 }
 EOM
-set complete+=H
