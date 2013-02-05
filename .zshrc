@@ -1,24 +1,5 @@
 export LANG=ja_JP.UTF-8
-
-export PATH=~/bin:~/.cabal/bin:~/Library/Haskell/bin:/opt/local/bin:/opt/local/sbin:/Developer/SDKs/flex_sdk_4/bin:/usr/local/mysql/bin:$PATH
-export MANPATH=/opt/local/share/man:$MANPATH
-
-export GISTY_DIR=~/gist
-
-export PAGER=lv
-export LV='-Ou8 -c'
-export EDITOR=vim
-
-export MAILCHECK=3600
-
-export __CF_USER_TEXT_ENCODING='0x1F5:0x08000100:14'
-
 # export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
-
-# for ruby mysql library
-export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
-
-# export LS_COLORS='di=38;5;101:ln=38;5;101:so=38;5;228:ex=38;5;172:bd=38;5;167:cd=38;5;179'
 
 bindkey -e
 
@@ -124,13 +105,6 @@ alias rsync='rsync --exclude ".DS_Store"'
 alias ls='ls -FG'
 alias ll='ls -l'
 
-alias -g V="| vim -R -"
-alias -g L="| $PAGER"
-alias -g G="| grep"
-alias -g C="| pbcopy"
-
-alias flog="tail -f ~/Library/Preferences/Macromedia/Flash\ Player/Logs/flashlog.txt | nkf -u -w"
-
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -139,6 +113,12 @@ _Z_CMD=j
 source ~/.zsh/z.sh
 precmd() {
     _z --add "$(pwd -P)"
+}
+
+function md2pdf() {
+    for i in $@; do;
+        pandoc $i -o ${i:r}.pdf --latex-engine=lualatex -V documentclass=ltjarticle -V geometry=top=30truemm,bottom=30truemm,left=25truemm,right=25truemm
+    done;
 }
 
 if [[ -s /Users/ryo/.rvm/scripts/rvm ]]; then source /Users/ryo/.rvm/scripts/rvm; fi  

@@ -23,6 +23,7 @@ NeoBundle 'Shogo/unite-outline'
 NeoBundle 'eagletmt/unite-haddock'
 
 " input
+NeoBundle 'thinca/vim-submode', 'my-master'
 NeoBundle 'Shougo/neocomplcache', 'c36f1e177989560edb1ccfc2d1b89359e3833ef5'
 " NeoBundle 'Shougo/neosnippet'
 NeoBundle 'ujihisa/neco-ghc'
@@ -130,16 +131,11 @@ nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap <silent> <Down> gj
 nnoremap <silent> <Up> gk
-nmap <C-j> <C-d>
-nmap <C-k> <C-u>
+nmap <silent> <C-j> <C-d>
+nmap <silent> <C-k> <C-u>
 vnoremap / /\%V
 vnoremap ? ?\%V
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
-
-nmap <silent> gb :bnext<CR>
-nmap <silent> gB :bprev<CR>
-nmap <silent> <C-n> :bnext<CR>
-nmap <silent> <C-p> :bprev<CR>
 
 command! -nargs=0 GetHighlightingGroup echo
     \ 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') .
@@ -152,6 +148,17 @@ noremap <Space>y "*Y
 noremap <Space>p "*p
 vnoremap <Space>y "*y
 vnoremap <Space>p "*p
+
+" submode.vim
+let g:submode_leave_with_key = 1
+call submode#enter_with('changebuffer', 'n', 's', 'gb', ':bnext<CR>')
+call submode#enter_with('changebuffer', 'n', 's', 'gB', ':bprev<CR>')
+call submode#map('changebuffer', 'n', 's', 'b', ':bnext<CR>')
+call submode#map('changebuffer', 'n', 's', 'B', ':bprev<CR>')
+call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
+call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
+call submode#map('changetab', 'n', '', 't', 'gt')
+call submode#map('changetab', 'n', '', 'T', 'gT')
 
 " vimshell
 vmap <silent> <Space>s :VimShellSendString<CR>
