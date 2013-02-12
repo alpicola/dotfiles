@@ -131,8 +131,8 @@ nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap <silent> <Down> gj
 nnoremap <silent> <Up> gk
-nmap <silent> <C-j> <C-d>
-nmap <silent> <C-k> <C-u>
+nnoremap <silent> <C-j> <C-d>
+nnoremap <silent> <C-k> <C-u>
 vnoremap / /\%V
 vnoremap ? ?\%V
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
@@ -225,7 +225,6 @@ nmap <Space>gL :GitLog -u<CR>
 nmap <Space>gp :GitPush<CR>
 nmap <Space>gP :GitPull<CR>
 nmap <Space>gs :GitStatus<CR>
-autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=git
 
 " ghcmod
 nmap <Space>ht :GhcModType<CR>
