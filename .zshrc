@@ -62,17 +62,10 @@ autoload -U colors && colors
 setopt prompt_subst
 
 local DEFAULT=$'%{[m%}'
-if [ "$TERM" = "xterm-256color" ]; then
-	local BLUE=$'%{[38;5;110m%}'
-	local RED=$'%{[38;5;209m%}'
-	local YELLOW=$'%{[38;5;179m%}'
-	local ERROR=$'%{[38;5;173m%}%{[48;5;52m%}'
-else
-	local BLUE=$'%{[34m%}'
-	local RED=$'%{[31m%}'
-	local YELLOW=$'%{[33m%}'
-	local ERROR=$'%{[31m%}%{$bg[magenta]%}'
-fi
+local BLUE=$'%{[34m%}'
+local RED=$'%{[31m%}'
+local YELLOW=$'%{[33m%}'
+local ERROR=$'%{[31m%}%{$bg[magenta]%}'
 
 # 終了ステータスが 0 でなければ終了ステータスを表示する。
 PROMPT="%(?..${ERROR}exit %?${DEFAULT}
@@ -81,24 +74,6 @@ PROMPT="%(?..${ERROR}exit %?${DEFAULT}
 # カレントディレクトリを短縮表示
 # http://0xcc.net/blog/archives/000032.html
 RPROMPT="${BLUE}[%(5~,%-2~/.../%2~,%~)]${DEFAULT}"
-
-if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
-	preexec() {
-		# see [zsh-workers:13180]
-		# http://www.zsh.org/mla/workers/2000/msg03993.html
-		emulate -L zsh
-		local -a cmd; cmd=(${(z)2})
-		echo -n "\e]1;$cmd[1]:t\a"
-		echo -n "\e]2;zsh\a"
-		# echo -n "\e]2;$PWD — $cmd[1]:t\a"
-	}
-
-	precmd() {
-		pwd=`pwd | perl -pe 's!^$ENV{'HOME'}!~!;s!^(.{5,}?/)(.+)(/.{10,})$!$1...$3!'`
-		echo -n "\e]1;${pwd}\a"
-		echo -n "\e]2;zsh\a"
-	}
-fi
 
 autoload -Uz zmv
 alias zmv='noglob zmv -W'
@@ -115,12 +90,6 @@ _Z_CMD=j
 source ~/.zsh/z.sh
 precmd() {
     _z --add "$(pwd -P)"
-}
-
-function md2pdf() {
-    for i in $@; do;
-        pandoc $i -o ${i:r}.pdf --latex-engine=lualatex -V documentclass=ltjarticle -V geometry=top=30truemm,bottom=30truemm,left=25truemm,right=25truemm
-    done;
 }
 
 if [[ -s /Users/ryo/.rvm/scripts/rvm ]]; then source /Users/ryo/.rvm/scripts/rvm; fi  

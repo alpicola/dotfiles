@@ -63,12 +63,8 @@ filetype indent on
 
 syntax on
 
-if &term =~ "xterm-256color"
-    colorscheme twilight256
-elseif &term =~ "xterm-color"
-    set t_Co=16
-    colorscheme twilight16
-endif
+set t_Co=16
+colorscheme twilight16
 
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,ucs-bom,default,latin1
@@ -117,10 +113,10 @@ if has('persistent_undo')
   set undodir=~/.vim/tmp/undo//
   set undofile
 endif
-if has('conceal')
-  set conceallevel=2
-  set concealcursor=i
-endif
+" if has('conceal')
+"  set conceallevel=2
+"  set concealcursor=i
+"endif
 
 let mapleader=' '
 let g:vim_indent_cont = &sw
