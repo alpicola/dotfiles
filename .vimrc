@@ -7,7 +7,7 @@ if has('vim_starting')
 endif
 
 " core
-NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/neobundle.vim', '4022205fb46b6ea90404fff462a9bf4d38d7a1db'
 NeoBundle 'Shougo/vimproc', {
     \ 'build' : {
     \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
@@ -23,8 +23,9 @@ NeoBundle 'Shogo/unite-outline'
 NeoBundle 'eagletmt/unite-haddock'
 
 " input
-NeoBundle 'thinca/vim-submode', 'my-master'
-NeoBundle 'Shougo/neocomplcache', 'c36f1e177989560edb1ccfc2d1b89359e3833ef5'
+NeoBundle 'kana/vim-submode'
+" NeoBundle 'Shougo/neocomplcache', 'c36f1e177989560edb1ccfc2d1b89359e3833ef5'
+NeoBundle 'Shougo/neocomplcache'
 " NeoBundle 'Shougo/neosnippet'
 NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'ujihisa/neco-look'
@@ -44,6 +45,7 @@ NeoBundle 'grafi-tt/vim-filetype-haskell'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'adimit/prolog.vim'
 NeoBundle 'alpicola/vim-egison'
 
 " tools
@@ -121,6 +123,7 @@ endif
 let mapleader=' '
 let g:vim_indent_cont = &sw
 let g:filetype_m = 'objc'
+let g:filetype_pl = 'prolog'
 let g:asmsyntax = 'ppc'
 
 nnoremap <silent> j gj
@@ -146,7 +149,7 @@ vnoremap <Space>y "*y
 vnoremap <Space>p "*p
 
 " submode.vim
-let g:submode_leave_with_key = 1
+let g:submode_keep_leaving_key = 1
 call submode#enter_with('changebuffer', 'n', 's', 'gb', ':bnext<CR>')
 call submode#enter_with('changebuffer', 'n', 's', 'gB', ':bprev<CR>')
 call submode#map('changebuffer', 'n', 's', 'b', ':bnext<CR>')

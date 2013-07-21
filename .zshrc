@@ -80,6 +80,18 @@ alias rsync='rsync --exclude ".DS_Store"'
 alias ls='ls -FG'
 alias ll='ls -l'
 
+enter() {
+    if [[ $#BUFFER -eq 0 ]]; then
+        echo
+        ls
+        zle reset-prompt
+    else
+        zle accept-line
+    fi
+}
+zle -N enter
+bindkey "^M" enter
+
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000

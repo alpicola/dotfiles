@@ -5,7 +5,9 @@ path=(
     $HOME/Library/Haskell/bin(N-/)
     /opt/local/bin(N-/)
     /usr/local/bin(N-/)
+    /usr/sbin(N-/)
     /usr/bin(N-/)
+    /sbin(N-/)
     /bin(N-/)
 )
 
