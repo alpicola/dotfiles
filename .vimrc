@@ -19,8 +19,9 @@ NeoBundle 'Shougo/vimproc', {
 
 " unite
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shogo/unite-outline'
+NeoBundle 'Shougo/unite-outline'
 NeoBundle 'eagletmt/unite-haddock'
+NeoBundle 'Shougo/neomru.vim'
 
 " input
 NeoBundle 'kana/vim-submode'
@@ -65,6 +66,7 @@ filetype indent on
 
 syntax on
 
+set background=dark
 set t_Co=16
 colorscheme twilight16
 

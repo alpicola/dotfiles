@@ -102,4 +102,5 @@ precmd() {
     _z --add "$(pwd -P)"
 }
 
-if [[ -s /Users/ryo/.rvm/scripts/rvm ]]; then source /Users/ryo/.rvm/scripts/rvm; fi  
+# OPAM configuration
+. /Users/alpicola/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
