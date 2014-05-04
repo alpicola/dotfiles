@@ -1,14 +1,16 @@
 typeset -U path
 path=(
+    /sbin(N-/)
+    /bin(N-/)
     $HOME/bin(N-/)
     $HOME/.cabal/bin(N-/)
     $HOME/Library/Haskell/bin(N-/)
     /opt/local/bin(N-/)
+    /usr/local/sbin(N-/)
     /usr/local/bin(N-/)
     /usr/sbin(N-/)
     /usr/bin(N-/)
-    /sbin(N-/)
-    /bin(N-/)
+    /usr/games(N-/)
 )
 
 typeset -U manpath

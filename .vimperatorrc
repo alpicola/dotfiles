@@ -65,3 +65,10 @@ EOM
 
 " prevent hint hiding contents
 hi HintElem background-color: rgba(255,255,0,0.5); color: black;
+
+ignorekeys clear
+ignorekeys add mail\\.google\\.com
+ignorekeys add www\\.google\\.com/calendar/
+ignorekeys add reader\\.livedoor\\.com/reader/
+
+style chrome://* .statuspanel-label { display: none; }

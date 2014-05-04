@@ -1,4 +1,4 @@
-export LANG=ja_JP.UTF-8
+export LANG=en_US.UTF-8
 # export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
 
 bindkey -e

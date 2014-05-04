@@ -100,7 +100,7 @@ set incsearch
 set wrapscan
 set nohlsearch
 set hidden
-set lazyredraw
+set nolazyredraw
 set winwidth=80
 set splitbelow
 set splitright
@@ -137,6 +137,10 @@ nnoremap <silent> <C-k> <C-u>
 vnoremap / /\%V
 vnoremap ? ?\%V
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
+
+" like vimperator
+nnoremap <silent> <C-n> :bnext<CR>
+nnoremap <silent> <C-p> :bprev<CR>
 
 command! -nargs=0 GetHighlightingGroup echo
     \ 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') .
