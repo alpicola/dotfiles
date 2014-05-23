@@ -22,7 +22,7 @@ hi LineNr         ctermfg=4          ctermbg=0
 " hi MoreMsg        ctermfg=172          ctermbg=222
 " hi NonText        ctermfg=181          ctermbg=233
 " hi Question       ctermfg=230          ctermbg=8
-hi Search         ctermfg=1          ctermbg=0
+hi Search         ctermfg=0          ctermbg=1
 " hi SpecialKey     ctermfg=172          ctermbg=233
 hi StatusLine     ctermfg=8          ctermbg=4
 hi StatusLineNC   ctermfg=4          ctermbg=15

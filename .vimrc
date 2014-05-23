@@ -25,7 +25,6 @@ NeoBundle 'Shougo/neomru.vim'
 
 " input
 NeoBundle 'kana/vim-submode'
-" NeoBundle 'Shougo/neocomplcache', 'c36f1e177989560edb1ccfc2d1b89359e3833ef5'
 NeoBundle 'Shougo/neocomplcache'
 " NeoBundle 'Shougo/neosnippet'
 NeoBundle 'ujihisa/neco-ghc'
@@ -36,18 +35,20 @@ NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'thinca/vim-textobj-comment'
 
 " filetype
-NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'VimClojure'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'grafi-tt/vim-filetype-haskell'
 NeoBundle 'tpope/vim-haml'
-NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'adimit/prolog.vim'
 NeoBundle 'alpicola/vim-egison'
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'jvoorhis/coq.vim'
+NeoBundle 'idris-hackers/idris-vim'
+NeoBundleLazy 'eagletmt/ghcmod-vim', { 'autoload' : { 'filetypes' : ['haskell'] } } 
+NeoBundleLazy 'vim-scripts/CoqIDE', { 'autoload' : { 'filetypes' : ['coq'] } }
 
 " tools
 NeoBundle 'Shougo/vimshell'
@@ -55,7 +56,6 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'motemen/git-vim'
 
 " doc
-NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'thinca/vim-ref'
 
 " colorscheme
@@ -98,7 +98,7 @@ set ignorecase
 set smartcase
 set incsearch
 set wrapscan
-set nohlsearch
+set hlsearch
 set hidden
 set nolazyredraw
 set winwidth=80
@@ -134,6 +134,7 @@ nnoremap <silent> <Down> gj
 nnoremap <silent> <Up> gk
 nnoremap <silent> <C-j> <C-d>
 nnoremap <silent> <C-k> <C-u>
+nnoremap <silent> <C-L> :noh<CR><C-L>
 vnoremap / /\%V
 vnoremap ? ?\%V
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
