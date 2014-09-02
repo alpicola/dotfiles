@@ -43,12 +43,13 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'adimit/prolog.vim'
+NeoBundle 'wting/rust.vim'
 NeoBundle 'alpicola/vim-egison'
 NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'jvoorhis/coq.vim'
-NeoBundle 'idris-hackers/idris-vim'
+NeoBundle 'def-lkb/vimbufsync'
+NeoBundle 'the-lambda-church/coquille'
+NeoBundle 'idris-hackers/idris-vim', '7d6ae0024e1710e2d2ae6c80e8125ac7a23ddb53'
 NeoBundleLazy 'eagletmt/ghcmod-vim', { 'autoload' : { 'filetypes' : ['haskell'] } } 
-NeoBundleLazy 'vim-scripts/CoqIDE', { 'autoload' : { 'filetypes' : ['coq'] } }
 
 " tools
 NeoBundle 'Shougo/vimshell'
@@ -122,12 +123,17 @@ endif
 "  set concealcursor=i
 "endif
 
-let mapleader=' '
+let mapleader=','
 let g:vim_indent_cont = &sw
 let g:filetype_m = 'objc'
 let g:filetype_pl = 'prolog'
 let g:asmsyntax = 'ppc'
 
+noremap <Space> <Nop>
+nnoremap <silent> H ^
+nnoremap <silent> L $
+nnoremap <silent> J gj
+nnoremap <silent> K gk
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap <silent> <Down> gj
@@ -167,8 +173,8 @@ call submode#map('changetab', 'n', '', 't', 'gt')
 call submode#map('changetab', 'n', '', 'T', 'gT')
 
 " vimshell
-vmap <silent> <Space>s :VimShellSendString<CR>
-nnoremap <silent> <Space>s :VimShellSendString<CR>
+" vmap <silent> <Space>s :VimShellSendString<CR>
+" nnoremap <silent> <Space>s :VimShellSendString<CR>
 
 " quickrun.vim
 let g:quickrun_config = {
@@ -231,10 +237,3 @@ nmap <Space>gL :GitLog -u<CR>
 nmap <Space>gp :GitPush<CR>
 nmap <Space>gP :GitPull<CR>
 nmap <Space>gs :GitStatus<CR>
-
-" ghcmod
-nmap <Space>ht :GhcModType<CR>
-nmap <Space>hT :GhcModTypeClear<CR>
-nmap <Space>hc :GhcModCheck<CR>
-nmap <Space>hl :GhcModLint<CR>
-nmap <Space>he :GhcModExpand<CR>

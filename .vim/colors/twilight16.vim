@@ -1,5 +1,5 @@
-" Maintainer: Yasuhiro Fuse
-" Last Change: 25 Jan 2009
+" Maintainer: alpicola
+" Last Change: 2014 May 30
 
 set background=dark
 hi clear
@@ -22,7 +22,7 @@ hi LineNr         ctermfg=4          ctermbg=0
 " hi MoreMsg        ctermfg=172          ctermbg=222
 " hi NonText        ctermfg=181          ctermbg=233
 " hi Question       ctermfg=230          ctermbg=8
-hi Search         ctermfg=0          ctermbg=1
+hi Search         ctermfg=3          ctermbg=1
 " hi SpecialKey     ctermfg=172          ctermbg=233
 hi StatusLine     ctermfg=8          ctermbg=4
 hi StatusLineNC   ctermfg=4          ctermbg=15
@@ -67,7 +67,7 @@ hi Debug          ctermfg=brown
 hi Underlined     ctermfg=1
 " hi Ignore         ctermfg=238
 hi Error          ctermfg=1 ctermbg=5
-" hi Todo           ctermfg=4 ctermbg=24
+hi Todo           ctermfg=0 ctermbg=11
 hi Pmenu          ctermfg=0 ctermbg=3
 hi PmenuSel       ctermfg=15 ctermbg=7
 hi PmenuSbar      ctermbg=10

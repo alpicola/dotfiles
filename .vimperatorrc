@@ -26,7 +26,8 @@ nnoremap j 5j
 nnoremap k 5k
 cmap <C-n> <Tab>
 cmap <C-p> <S-Tab>
-vmap P y<Esc><Esc>P
+nmap p <Nop>
+vmap p <Nop>
 
 " http://d.hatena.ne.jp/eagletmt/20120104/1325627319
 js <<EOM
