@@ -44,8 +44,11 @@ NeoBundle 'tpope/vim-haml'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'adimit/prolog.vim'
 NeoBundle 'wting/rust.vim'
+NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'alpicola/vim-egison'
+NeoBundle 'tikhomirov/vim-glsl'
 NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'raichoo/purescript-vim'
 NeoBundle 'def-lkb/vimbufsync'
 NeoBundle 'the-lambda-church/coquille'
 NeoBundle 'idris-hackers/idris-vim', '7d6ae0024e1710e2d2ae6c80e8125ac7a23ddb53'
@@ -61,6 +64,8 @@ NeoBundle 'thinca/vim-ref'
 
 " colorscheme
 NeoBundle 'altercation/vim-colors-solarized'
+
+NeoBundleCheck
 
 filetype plugin on
 filetype indent on
@@ -128,6 +133,7 @@ let g:vim_indent_cont = &sw
 let g:filetype_m = 'objc'
 let g:filetype_pl = 'prolog'
 let g:asmsyntax = 'ppc'
+let g:tex_flavor = 'latex'
 
 noremap <Space> <Nop>
 nnoremap <silent> H ^

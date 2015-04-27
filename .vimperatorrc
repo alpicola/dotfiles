@@ -9,11 +9,12 @@ set nextpattern=\bnext\b,\bmore\b,next,^次(の)?ページ,\b次.*,→\b,^>$,^(>
 set previouspattern=\bprev|previous\b,prev,^前(の)?ページ,\b前.*,\b←,^<$,^(<<|≪)$,^(<|≪),(<|≪)$ 
 
 let g:plugin_loader_roots="~/repos/vimperator-plugins"
-let g:plugin_loader_plugins="_libly,tombloo,caret-hint,prevent-pseudo-domain"
+let g:plugin_loader_plugins="_libly,tombloo,caret-hint,prevent-pseudo-domain,copy"
 
 nmap <C-j> <C-d>
 nmap <C-k> <C-u>
 nmap <C-t> :tabnew<CR>
+nmap <C-l> :nohlsearch<CR>
 nmap a :tombloo Link<CR>
 nmap A <Nop>
 nmap s :set<Space>complete=s<CR>:tabopen<Space>
@@ -43,12 +44,24 @@ mappings.addUserMap(
 );
 EOM
 
+" copy.js
+javascript <<EOM
+  liberator.globalVariables.copy_templates = [
+    { label: 'title',           value: '%TITLE%' },
+    { label: 'plain',           value: '%TITLE% %URL%' },
+    { label: 'anchor',          value: '<a href="%URL%">%TITLE%</a>' },
+    { label: 'selanchor',       value: '<a href="%URL%" title="%TITLE%">%SEL%</a>' },
+    { label: 'htmlblockquote',  value: '<blockquote cite="%URL%" title="%TITLE%">%HTMLSEL%</blockquote>' },
+    { label: 'markdown',        value: '[%TITLE%](%URL%)' },
+  ];
+EOM
+
 " Firebug inspect mode hint
 js <<EOM
-hints.addMode('i', 'firebug inspect hint', function(elem){
+hints.addMode('i', 'firebug inspect hint', function(elem) {
     Firebug.toggleBar(true);
     Firebug.chrome.select(elem);
-}, function() '//*');
+}, function() { return '//*' });
 EOM
 
 " Hatena Bookmark
