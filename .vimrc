@@ -51,8 +51,10 @@ NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'raichoo/purescript-vim'
 NeoBundle 'def-lkb/vimbufsync'
 NeoBundle 'the-lambda-church/coquille'
+NeoBundle 'derekelkins/agda-vim'
 NeoBundle 'idris-hackers/idris-vim', '7d6ae0024e1710e2d2ae6c80e8125ac7a23ddb53'
 NeoBundleLazy 'eagletmt/ghcmod-vim', { 'autoload' : { 'filetypes' : ['haskell'] } } 
+NeoBundle 'munshkr/vim-tidal'
 
 " tools
 NeoBundle 'Shougo/vimshell'
@@ -78,7 +80,7 @@ colorscheme twilight16
 
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,ucs-bom,default,latin1
-set ambiwidth=double
+set ambiwidth=single
 set wildmode=longest:full,full
 set wildmenu
 set completeopt=menu,preview,longest,menuone
@@ -129,8 +131,9 @@ endif
 "endif
 
 let mapleader=','
+let maplocalleader='\'
 let g:vim_indent_cont = &sw
-let g:filetype_m = 'objc'
+let g:filetype_m = 'matlab'
 let g:filetype_pl = 'prolog'
 let g:asmsyntax = 'ppc'
 let g:tex_flavor = 'latex'
@@ -150,6 +153,8 @@ nnoremap <silent> <C-L> :noh<CR><C-L>
 vnoremap / /\%V
 vnoremap ? ?\%V
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
+
+nmap <Space>d :b#<bar>bd#<CR>
 
 " like vimperator
 nnoremap <silent> <C-n> :bnext<CR>

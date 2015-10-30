@@ -28,5 +28,10 @@ elseif has("gui_mac")
 	map <D-M-Left> :tabp<CR>
 	imap <D-M-Right> <C-o>:tabn<CR>
 	imap <D-M-Left> <C-o>:tabp<CR>
+els
+	set gfn=Source\ Code\ Pro\ 13
+	set gfw=Source\ Code\ Pro\ 13
+	set guioptions-=T
+	" set gfw=DejaVuSansMono:h12
 end
 
