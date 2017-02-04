@@ -126,15 +126,15 @@ if has('persistent_undo')
   set undofile
 endif
 " if has('conceal')
-"  set conceallevel=2
-"  set concealcursor=i
-"endif
+"   set conceallevel=2
+"   set concealcursor=i
+" endif
 
 let mapleader=','
 let maplocalleader='\'
 let g:vim_indent_cont = &sw
-let g:filetype_m = 'matlab'
-let g:filetype_pl = 'prolog'
+let g:filetype_m = 'matlab' " or objc
+let g:filetype_pl = 'perl' " or prolog
 let g:asmsyntax = 'ppc'
 let g:tex_flavor = 'latex'
 

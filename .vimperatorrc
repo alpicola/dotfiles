@@ -65,17 +65,17 @@ hints.addMode('i', 'firebug inspect hint', function(elem) {
 EOM
 
 " Hatena Bookmark
-js <<EOM
-if (typeof hBookmark != 'undefined') {
-    liberator.globalVariables.hBookmark_shortcuts = {
-        hintsAdd     : 'x',
-        hintsComment : 'X',
-        add          : ['x'],
-        comment      : ['X'],
-    };
-    liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
-}
-EOM
+" js <<EOM
+" if (typeof hBookmark != 'undefined') {
+"     liberator.globalVariables.hBookmark_shortcuts = {
+"         hintsAdd     : 'x',
+"         hintsComment : 'X',
+"         add          : ['x'],
+"         comment      : ['X'],
+"     };
+"     liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
+" }
+" EOM
 
 " prevent hint hiding contents
 hi HintElem background-color: rgba(255,255,0,0.5); color: black;
