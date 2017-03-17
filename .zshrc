@@ -38,6 +38,8 @@ setopt print_eight_bit
 # ビープ音
 setopt no_beep
 
+setopt ignoreeof
+
 # 補完
 
 # 補完候補一覧で ls -F のように種類を表示

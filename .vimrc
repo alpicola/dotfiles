@@ -138,6 +138,8 @@ let g:filetype_pl = 'perl' " or prolog
 let g:asmsyntax = 'ppc'
 let g:tex_flavor = 'latex'
 
+nnoremap ; :
+nnoremap : ;
 noremap <Space> <Nop>
 nnoremap <silent> H ^
 nnoremap <silent> L $
@@ -153,8 +155,6 @@ nnoremap <silent> <C-L> :noh<CR><C-L>
 vnoremap / /\%V
 vnoremap ? ?\%V
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
-
-nmap <Space>d :b#<bar>bd#<CR>
 
 " like vimperator
 nnoremap <silent> <C-n> :bnext<CR>

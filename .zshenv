@@ -1,3 +1,5 @@
+setopt no_global_rcs
+
 typeset -U path
 path=(
     /sbin(N-/)
