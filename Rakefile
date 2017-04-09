@@ -2,7 +2,7 @@ HOME = ENV['HOME'] || File.expand_path('~')
 
 DOTFILES_REPO = 'git://github.com/alpicola/dotfiles.git'
 DOTFILES_DIR  = File.expand_path('~/repos/dotfiles')
-DOTFILES = %w|.vim .vimrc .zsh .zshenv .zshrc .vimperator .vimperatorrc .gitconfig|
+DOTFILES = %w|.vim .vimrc .gvimrc .zsh .zshenv .zshrc .vimperator .vimperatorrc .gitconfig|
 
 cd HOME
 
