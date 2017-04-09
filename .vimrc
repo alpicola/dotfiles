@@ -55,6 +55,7 @@ NeoBundle 'derekelkins/agda-vim'
 NeoBundle 'idris-hackers/idris-vim', '7d6ae0024e1710e2d2ae6c80e8125ac7a23ddb53'
 NeoBundleLazy 'eagletmt/ghcmod-vim', { 'autoload' : { 'filetypes' : ['haskell'] } } 
 NeoBundle 'munshkr/vim-tidal'
+NeoBundle 'motemen/hatena-vim'
 
 " tools
 NeoBundle 'Shougo/vimshell'
@@ -205,6 +206,7 @@ nmap <silent> <Space>r :QuickRun<CR>
 
 " unite.vim
 let g:unite_enable_start_insert = 1
+let g:unite_enable_auto_select = 0
 nnoremap <silent> <Space>ub :<C-u>Unite buffer<CR>
 nnoremap <silent> <Space>ud :<C-u>Unite file_rec<CR>
 nnoremap <silent> <Space>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>

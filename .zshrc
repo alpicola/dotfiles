@@ -4,9 +4,11 @@ export LANG=en_US.UTF-8
 bindkey -e
 
 # 履歴検索
-autoload history-search-end
-bindkey '^P' up-line-or-search
-bindkey '^N' down-line-or-search
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
 bindkey "^R" history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-pattern-search-forward
 
