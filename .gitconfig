@@ -2,5 +2,11 @@
     excludesfile = ~/.gitignore
     editor = vim
 [user]
-	email = ryo@alpico.la
-	name = alpicola
+    email = ryo@alpico.la
+    name = alpicola
+[pull]
+    rebase = preserve
+[merge]
+    ff = false
+[include]
+    path = ~/.gitconfig.local
