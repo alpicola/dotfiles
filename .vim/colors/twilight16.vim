@@ -12,9 +12,9 @@ let g:colors_name="twilight16"
 hi Normal         ctermfg=15         ctermbg=0
 " hi Cursor         ctermfg=255          ctermbg=248
 " hi CursorIM       ctermfg=255          ctermbg=172
-" hi Directory      ctermfg=3          ctermbg=233
-hi ErrorMsg       ctermfg=1          ctermbg=3
-hi VertSplit      ctermfg=7          ctermbg=15
+" hi Directory      ctermfg=11          ctermbg=233
+hi ErrorMsg       ctermfg=1          ctermbg=11
+hi VertSplit      ctermfg=3          ctermbg=15
 " hi Folded         ctermfg=230          ctermbg=8
 hi IncSearch      ctermfg=0          ctermbg=1
 hi LineNr         ctermfg=4          ctermbg=0
@@ -22,13 +22,13 @@ hi LineNr         ctermfg=4          ctermbg=0
 " hi MoreMsg        ctermfg=172          ctermbg=222
 " hi NonText        ctermfg=181          ctermbg=233
 " hi Question       ctermfg=230          ctermbg=8
-hi Search         ctermfg=3          ctermbg=1
+hi Search         ctermfg=11          ctermbg=1
 " hi SpecialKey     ctermfg=172          ctermbg=233
 hi StatusLine     ctermfg=8          ctermbg=4
 hi StatusLineNC   ctermfg=4          ctermbg=15
 " hi Title          ctermfg=230          ctermbg=8
 hi Visual         ctermfg=8          ctermbg=4
-hi WarningMsg     ctermfg=1          ctermbg=3
+hi WarningMsg     ctermfg=1          ctermbg=11
 " hi WildMenu       ctermfg=230          ctermbg=8
 
 "Syntax hilight groups
@@ -42,8 +42,8 @@ hi Boolean        ctermfg=1
 hi Float          ctermfg=4
 hi Identifier     cterm=NONE ctermfg=4
 hi Function       ctermfg=2
-hi Statement      cterm=bold ctermfg=13
-hi Conditional    ctermfg=9
+hi Statement      cterm=bold ctermfg=9
+hi Conditional    ctermfg=13
 " hi Repeat         ctermfg=228
 " hi Label          ctermfg=179
 hi Operator       ctermfg=1
@@ -51,25 +51,25 @@ hi Operator       ctermfg=1
 " hi Exception      ctermfg=228
 hi PreProc        ctermfg=6
 hi Include        ctermfg=6
-hi Define         ctermfg=11
-" hi Macro          ctermfg=94
+hi Define         ctermfg=7
+" hi Macro          ctermfg=134
 hi PreCondit      ctermfg=14
 hi Type           cterm=bold ctermfg=14
-hi StorageClass   ctermfg=9
+hi StorageClass   ctermfg=13
 " hi Structure      ctermfg=136
 hi Typedef        ctermfg=14
 hi Special        ctermfg=1
-hi SpecialChar    ctermfg=7
+hi SpecialChar    ctermfg=3
 hi Tag            ctermfg=14
-hi Delimiter      ctermfg=7
+hi Delimiter      ctermfg=3
 " hi SpecialComment ctermfg=168
 hi Debug          ctermfg=brown
 hi Underlined     ctermfg=1
 " hi Ignore         ctermfg=238
 hi Error          ctermfg=1 ctermbg=5
-hi Todo           ctermfg=0 ctermbg=11
-hi Pmenu          ctermfg=0 ctermbg=3
-hi PmenuSel       ctermfg=15 ctermbg=7
+hi Todo           ctermfg=0 ctermbg=7
+hi Pmenu          ctermfg=0 ctermbg=11
+hi PmenuSel       ctermfg=15 ctermbg=3
 hi PmenuSbar      ctermbg=10
 hi PmenuThumb     ctermfg=2
 hi MatchParen     ctermfg=4
