@@ -97,7 +97,7 @@ zle -N enter
 bindkey "^M" enter
 
 HISTFILE=~/.zsh_history
-HISTSIZE=10000000
+HISTSIZE=1000000
 SAVEHIST=$HISTSIZE
 
 _Z_CMD=j
