@@ -21,6 +21,7 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'eagletmt/unite-haddock'
+NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'Shougo/neomru.vim'
 
 " input
@@ -212,6 +213,7 @@ nnoremap <silent> <Space>ud :<C-u>Unite file_rec<CR>
 nnoremap <silent> <Space>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> <Space>ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> <Space>um :<C-u>Unite file_mru<CR>
+nnoremap <silent> <Space>ut :<C-u>Unite tag<CR>
 nnoremap <silent> <Space>uu :<C-u>Unite buffer file_mru<CR>
 nnoremap <silent> <Space>ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru<CR>
 nnoremap <silent> <Space>uo :<C-u>Unite outline<CR>
