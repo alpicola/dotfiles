@@ -57,6 +57,7 @@ NeoBundle 'idris-hackers/idris-vim', '7d6ae0024e1710e2d2ae6c80e8125ac7a23ddb53'
 NeoBundleLazy 'eagletmt/ghcmod-vim', { 'autoload' : { 'filetypes' : ['haskell'] } } 
 NeoBundle 'munshkr/vim-tidal'
 NeoBundle 'motemen/hatena-vim'
+NeoBundle 'martinda/Jenkinsfile-vim-syntax'
 
 " tools
 NeoBundle 'Shougo/vimshell'
