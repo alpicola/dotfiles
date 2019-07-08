@@ -58,6 +58,7 @@ NeoBundleLazy 'eagletmt/ghcmod-vim', { 'autoload' : { 'filetypes' : ['haskell'] 
 NeoBundle 'munshkr/vim-tidal'
 NeoBundle 'motemen/hatena-vim'
 NeoBundle 'martinda/Jenkinsfile-vim-syntax'
+NeoBundle 'autowitch/hive.vim'
 
 " tools
 NeoBundle 'Shougo/vimshell'
