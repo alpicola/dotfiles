@@ -82,7 +82,7 @@ alias zmv='noglob zmv -W'
 
 alias rsync='rsync --exclude ".DS_Store"'
 alias ls='ls -FG'
-alias ll='ls -l'
+alias less='less -R'
 
 enter() {
     if [[ $#BUFFER -eq 0 ]]; then
