@@ -59,6 +59,7 @@ NeoBundle 'munshkr/vim-tidal'
 NeoBundle 'motemen/hatena-vim'
 NeoBundle 'martinda/Jenkinsfile-vim-syntax'
 NeoBundle 'autowitch/hive.vim'
+NeoBundle 'vim-python/python-syntax'
 
 " tools
 NeoBundle 'Shougo/vimshell'
