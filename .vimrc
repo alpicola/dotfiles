@@ -22,7 +22,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'eagletmt/unite-haddock'
 NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'Shougo/neomru.vim'
+" NeoBundle 'Shougo/neomru.vim'
 
 " input
 NeoBundle 'kana/vim-submode'
