@@ -1,5 +1,5 @@
 export LANG=en_US.UTF-8
-# export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
+export SHELL=zsh
 
 bindkey -e
 
@@ -80,9 +80,10 @@ RPROMPT="${BLUE}[%(5~,%-2~/.../%2~,%~)]${DEFAULT}"
 autoload -Uz zmv
 alias zmv='noglob zmv -W'
 
-alias rsync='rsync --exclude ".DS_Store"'
 alias ls='ls -FG'
 alias less='less -R'
+
+alias -g GHQ='$(ghq list -p | peco)'
 
 enter() {
     if [[ $#BUFFER -eq 0 ]]; then
