@@ -5,8 +5,6 @@ path=(
     /sbin(N-/)
     /bin(N-/)
     $HOME/bin(N-/)
-    $HOME/.cabal/bin(N-/)
-    $HOME/Library/Haskell/bin(N-/)
     /opt/local/bin(N-/)
     /usr/local/sbin(N-/)
     /usr/local/bin(N-/)
