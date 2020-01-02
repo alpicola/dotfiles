@@ -1,0 +1,11 @@
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+nnoremap ; :
+nnoremap : ;
+nnoremap H ^
+nnoremap L $
+nnoremap <C-n> gt
+nnoremap <C-p> gT
