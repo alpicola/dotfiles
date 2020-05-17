@@ -1,5 +1,5 @@
 DOTFILES=.vim .vimrc .gvimrc .ideavimrc .zsh .zshenv .zshrc .tmux.conf .gitconfig
-DOTFILES_REPO := $(shell ghq list -p alpicola/dotfiles)
+DOTFILES_REPO := $(shell ghq root)/github.com/alpicola/dotfiles
 
 .PHONY: install
 install: $(DOTFILES_REPO)
