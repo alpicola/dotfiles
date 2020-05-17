@@ -8,15 +8,16 @@ brew "zsh"
 brew "tmux"
 brew "vim"
 brew "git"
-brew "docker"
 cask "docker"
+cask "visual-studio-code"
 
 # More tools
-brew "awscli"
 brew "ghq"
 brew "peco"
 brew "jq"
 brew "pwgen"
+brew "awscli"
+cask "google-cloud-sdk"
 
 # Fonts
 cask "font-source-code-pro"
