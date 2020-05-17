@@ -7,4 +7,3 @@ install: $(DOTFILES_REPO)
 
 $(DOTFILES_REPO):
 	ghq get alpicola/dotfiles
-	cd $(DOTFILES_REPO); git submodule update --init
