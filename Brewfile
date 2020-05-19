@@ -2,6 +2,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
+tap "homebrew/cask-versions"
 
 # Essential tools
 brew "zsh"
@@ -16,8 +17,17 @@ brew "ghq"
 brew "peco"
 brew "jq"
 brew "pwgen"
+brew "direnv"
 brew "awscli"
 cask "google-cloud-sdk"
+
+# Languages
+brew "python"
+cask "java11"
+brew "maven"
+brew "sbt"
+brew "go"
+brew "dep"
 
 # Fonts
 cask "font-source-code-pro"
