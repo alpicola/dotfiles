@@ -60,6 +60,8 @@ NeoBundle 'motemen/hatena-vim'
 NeoBundle 'martinda/Jenkinsfile-vim-syntax'
 NeoBundle 'autowitch/hive.vim'
 NeoBundle 'vim-python/python-syntax'
+NeoBundle 'hashivim/vim-terraform'
+NeoBundle 'uarun/vim-protobuf'
 
 " tools
 NeoBundle 'Shougo/vimshell'
