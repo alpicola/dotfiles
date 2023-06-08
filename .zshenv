@@ -2,8 +2,6 @@ setopt no_global_rcs
 
 typeset -U path
 path=(
-    /sbin(N-/)
-    /bin(N-/)
     $HOME/bin(N-/)
     /opt/local/bin(N-/)
     /usr/local/sbin(N-/)
@@ -11,6 +9,8 @@ path=(
     /usr/sbin(N-/)
     /usr/bin(N-/)
     /usr/games(N-/)
+    /sbin(N-/)
+    /bin(N-/)
 )
 
 typeset -U manpath
