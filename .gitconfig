@@ -6,6 +6,7 @@
     name = alpicola
 [pull]
     rebase = preserve
+    ff = only
 [merge]
     ff = false
 [include]
