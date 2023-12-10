@@ -9,25 +9,24 @@ brew "zsh"
 brew "tmux"
 brew "vim"
 brew "git"
-cask "docker"
-cask "visual-studio-code"
 
 # More tools
+brew "wget"
 brew "ghq"
 brew "peco"
 brew "jq"
 brew "pwgen"
 brew "direnv"
 brew "awscli"
+cask "docker"
 cask "google-cloud-sdk"
+cask "visual-studio-code"
 
 # Languages
 brew "python"
-cask "java11"
 brew "maven"
 brew "sbt"
 brew "go"
-brew "dep"
 
 # Fonts
 cask "font-source-code-pro"
