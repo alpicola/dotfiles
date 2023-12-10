@@ -5,4 +5,5 @@
 .vim/tmp/undo/*
 .vim/bundle/*
 !.vim/bundle/neobundle.vim
+.vim/plugged/*
 !.gitkeep

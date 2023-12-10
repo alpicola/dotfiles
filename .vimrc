@@ -1,80 +1,35 @@
 set nocompatible
 filetype off
 
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle/'))
-endif
-
-" core
-NeoBundle 'Shougo/neobundle.vim', '4022205fb46b6ea90404fff462a9bf4d38d7a1db'
-NeoBundle 'Shougo/vimproc', {
-    \ 'build' : {
-    \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
-    \     'cygwin' : 'make -f make_cygwin.mak',
-    \     'mac' : 'make -f make_mac.mak',
-    \     'unix' : 'make -f make_unix.mak',
-    \    },
-    \ }
+call plug#begin()
 
 " unite
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'eagletmt/unite-haddock'
-NeoBundle 'tsukkee/unite-tag'
-" NeoBundle 'Shougo/neomru.vim'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/unite-outline'
+Plug 'tsukkee/unite-tag'
 
 " input
-NeoBundle 'kana/vim-submode'
-NeoBundle 'Shougo/neocomplcache'
-" NeoBundle 'Shougo/neosnippet'
-NeoBundle 'ujihisa/neco-ghc'
-NeoBundle 'ujihisa/neco-look'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-textobj-indent'
-NeoBundle 'thinca/vim-textobj-comment'
+Plug 'Shougo/neocomplcache'
+Plug 'ujihisa/neco-look'
 
 " filetype
-NeoBundle 'derekwyatt/vim-scala'
-NeoBundle 'VimClojure'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'tpope/vim-haml'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'adimit/prolog.vim'
-NeoBundle 'wting/rust.vim'
-NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'alpicola/vim-egison'
-NeoBundle 'tikhomirov/vim-glsl'
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'raichoo/purescript-vim'
-NeoBundle 'def-lkb/vimbufsync'
-NeoBundle 'the-lambda-church/coquille'
-NeoBundle 'derekelkins/agda-vim'
-NeoBundle 'idris-hackers/idris-vim', '7d6ae0024e1710e2d2ae6c80e8125ac7a23ddb53'
-NeoBundleLazy 'eagletmt/ghcmod-vim', { 'autoload' : { 'filetypes' : ['haskell'] } } 
-NeoBundle 'munshkr/vim-tidal'
-NeoBundle 'motemen/hatena-vim'
-NeoBundle 'martinda/Jenkinsfile-vim-syntax'
-NeoBundle 'autowitch/hive.vim'
-NeoBundle 'vim-python/python-syntax'
-NeoBundle 'hashivim/vim-terraform'
-NeoBundle 'uarun/vim-protobuf'
+Plug 'derekwyatt/vim-scala'
+Plug 'pangloss/vim-javascript'
+Plug 'wting/rust.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'motemen/hatena-vim'
+Plug 'vim-python/python-syntax'
+Plug 'hashivim/vim-terraform'
+Plug 'uarun/vim-protobuf'
 
 " tools
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'motemen/git-vim'
+Plug 'motemen/git-vim'
 
 " doc
-NeoBundle 'thinca/vim-ref'
+Plug 'thinca/vim-ref'
 
-" colorscheme
-NeoBundle 'altercation/vim-colors-solarized'
-
-NeoBundleCheck
+call plug#end()
 
 filetype plugin on
 filetype indent on
@@ -132,10 +87,6 @@ if has('persistent_undo')
   set undodir=~/.vim/tmp/undo//
   set undofile
 endif
-" if has('conceal')
-"   set conceallevel=2
-"   set concealcursor=i
-" endif
 
 let mapleader=','
 let maplocalleader='\'
@@ -167,48 +118,11 @@ nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
 nnoremap <silent> <C-n> :bnext<CR>
 nnoremap <silent> <C-p> :bprev<CR>
 
-command! -nargs=0 GetHighlightingGroup echo
-    \ 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') .
-    \ '> trans<' . synIDattr(synID(line('.'),col('.'),0),'name') .
-    \ '> lo<' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'name') . '>'
-nmap <Space>hg :GetHighlightingGroup<CR>
-
 " clipboard
 noremap <Space>y "*Y
 noremap <Space>p "*p
 vnoremap <Space>y "*y
 vnoremap <Space>p "*p
-
-" submode.vim
-let g:submode_keep_leaving_key = 1
-call submode#enter_with('changebuffer', 'n', 's', 'gb', ':bnext<CR>')
-call submode#enter_with('changebuffer', 'n', 's', 'gB', ':bprev<CR>')
-call submode#map('changebuffer', 'n', 's', 'b', ':bnext<CR>')
-call submode#map('changebuffer', 'n', 's', 'B', ':bprev<CR>')
-call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
-call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
-call submode#map('changetab', 'n', '', 't', 'gt')
-call submode#map('changetab', 'n', '', 'T', 'gT')
-
-" vimshell
-" vmap <silent> <Space>s :VimShellSendString<CR>
-" nnoremap <silent> <Space>s :VimShellSendString<CR>
-
-" quickrun.vim
-let g:quickrun_config = {
-    \     '_' : {
-    \         'runner' : 'vimproc',
-    \         'runner/vimproc/updatetime' : 40,
-    \         'outputter/buffer/split' : 'below 10sp',
-    \     },
-    \     'egison' : {
-    \         'command' : 'egisonc',
-    \         'exec': ['%c %o --test %s', '%s:p:r'],
-    \         'tempfile': '%{tempname()}.egi',
-    \         'hook/sweep/files': '%S:p:r',
-    \     },
-    \ }
-nmap <silent> <Space>r :QuickRun<CR>
 
 " unite.vim
 let g:unite_enable_start_insert = 1
@@ -224,8 +138,10 @@ nnoremap <silent> <Space>ua :<C-u>UniteWithBufferDir -buffer-name=files buffer f
 nnoremap <silent> <Space>uo :<C-u>Unite outline<CR>
 
 " neocomplcache
+let g:acp_enableAtStartup = 0
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 2
@@ -238,12 +154,6 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
 nnoremap <Space>nc :NeoComplCacheCachingBuffer<CR>
-
-" neosnippet
-" imap <C-k> <Plug>(neosnippet_expand_or_jump)
-" smap <C-k> <Plug>(neosnippet_expand_or_jump)
-" imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-" smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " git.vim
 nmap <Space>ga :GitAdd<CR>
